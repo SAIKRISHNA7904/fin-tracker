@@ -5,9 +5,8 @@ import Dashboard from './components/Dashboard';
 import TransactionList from './components/TransactionList';
 import TransactionForm from './components/TransactionForm';
 import Settings from './components/Settings';
-import AIAdvisor from './components/AIAdvisor';
 import Investments from './components/Investments';
-import { LayoutDashboard, List, Settings as SettingsIcon, Moon, Sun, Plus, BrainCircuit, TrendingUp } from 'lucide-react';
+import { LayoutDashboard, List, Settings as SettingsIcon, Moon, Sun, Plus, TrendingUp } from 'lucide-react';
 
 const App: React.FC = () => {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
@@ -188,14 +187,6 @@ const App: React.FC = () => {
             <TrendingUp className="w-5 h-5" />
             Investments
           </button>
-
-          <button 
-            onClick={() => setView(ViewState.ADVISOR)}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all font-medium ${view === ViewState.ADVISOR ? 'bg-indigo-50 text-indigo-600 dark:bg-indigo-900/20 dark:text-indigo-400' : 'text-gray-500 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-800'}`}
-          >
-            <BrainCircuit className="w-5 h-5" />
-            AI Advisor
-          </button>
           
           <button 
             onClick={() => setView(ViewState.SETTINGS)}
@@ -237,14 +228,12 @@ const App: React.FC = () => {
               {view === ViewState.DASHBOARD && 'Dashboard'}
               {view === ViewState.TRANSACTIONS && 'Transactions'}
               {view === ViewState.INVESTMENTS && 'Investment Portfolio'}
-              {view === ViewState.ADVISOR && 'Financial AI'}
               {view === ViewState.SETTINGS && 'Settings'}
             </h2>
             <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">
               {view === ViewState.DASHBOARD && 'Overview of your financial health'}
               {view === ViewState.TRANSACTIONS && 'Manage your income and expenses'}
               {view === ViewState.INVESTMENTS && 'Track your assets and growth'}
-              {view === ViewState.ADVISOR && 'Get insights powered by Gemini'}
               {view === ViewState.SETTINGS && 'Manage your data and preferences'}
             </p>
           </div>
@@ -279,9 +268,6 @@ const App: React.FC = () => {
               onAddAccount={addAccount}
               onDeleteAccount={deleteAccount}
             />
-          )}
-          {view === ViewState.ADVISOR && (
-            <AIAdvisor transactions={transactions} />
           )}
           {view === ViewState.SETTINGS && (
             <Settings 
