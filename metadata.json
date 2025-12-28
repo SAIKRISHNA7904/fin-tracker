@@ -1,0 +1,5 @@
+{
+  "name": "fin tracker",
+  "description": "A modern, dark-mode enabled income and expense tracker featuring local data persistence, backup/restore capabilities, and AI-powered financial insights using Google Gemini.",
+  "requestFramePermissions": []
+}
